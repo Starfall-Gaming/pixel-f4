@@ -167,12 +167,10 @@ function PANEL:Init()
     self.BecomeBtn = vgui.Create("PIXEL.TextButton", self)
     self.BecomeBtn:SetFont("F4.SelectedJobButton")
     self.BecomeBtn.DoClick = function()
-        if self:GetVote() then
-            RunConsoleCommand("darkrp", "vote" .. self:GetCommand())
-        else
-            RunConsoleCommand("darkrp", self:GetCommand())
-        end
-
+        local class = self:GetTeamNo()
+        net.Start("ixJobSwitch")
+            net.WriteUInt(class, 8)
+            net.SendToServer() 
         self:Close()
         PIXEL.F4.ToggleMenu()
     end
@@ -208,7 +206,7 @@ function PANEL:SelectJob(jobData, teamNo)
     self:SetSalary("Salary: " .. PIXEL.FormatMoney(jobData.salary))
     self:SetDescription(jobData.description)
     self:SetVote(jobData.vote)
-    self:SetCommand(jobData.command)
+    self:SetCommand(jobData.uniqueID)
     self:SetTeamNo(teamNo)
     self:SetRankTag(PIXEL.F4.Config.RankTags[jobData.rankTag])
 
@@ -229,7 +227,7 @@ function PANEL:SelectJob(jobData, teamNo)
         return
     end
 
-    DarkRP.setPreferredJobModel(teamNo, models[self.ModelIndex])
+    -- DarkRP.setPreferredJobModel(teamNo, models[self.ModelIndex])
     self.Model:SetModel(models[self.ModelIndex])
 
     self.Model.LeftButton.DoClick = function(s)
@@ -240,7 +238,7 @@ function PANEL:SelectJob(jobData, teamNo)
         end
 
         self.Model:SetModel(models[self.ModelIndex])
-        DarkRP.setPreferredJobModel(teamNo, models[self.ModelIndex])
+        -- DarkRP.setPreferredJobModel(teamNo, models[self.ModelIndex])
     end
 
     self.Model.RightButton.DoClick = function(s)
@@ -251,7 +249,7 @@ function PANEL:SelectJob(jobData, teamNo)
         end
 
         self.Model:SetModel(models[self.ModelIndex])
-        DarkRP.setPreferredJobModel(teamNo, models[self.ModelIndex])
+        -- DarkRP.setPreferredJobModel(teamNo, models[self.ModelIndex])
     end
 end
 

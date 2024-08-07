@@ -45,7 +45,7 @@ function PANEL:SetItems(items, searchTerm)
     local nextRow = true
     local itemType = self:GetItemType()
 
-    for k,v in SortedPairsByMemberValue(items, "sortOrder") do
+    for k,v in pairs(items) do
         if searchTerm and not string.find(string.lower(v.name), searchTerm) then continue end
         if self.ShouldShow and not self.ShouldShow(v) then continue end
 

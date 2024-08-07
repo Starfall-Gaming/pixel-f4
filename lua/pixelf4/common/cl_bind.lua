@@ -37,9 +37,9 @@ function PIXEL.F4.ToggleMenu()
 end
 
 hook.Add("ShowSpare2", "PIXEL.F4.ToggleMenu", PIXEL.F4.ToggleMenu)
-hook.Add("PostGamemodeLoaded", "PIXEL.F4.RemoveDefaultF4", function()
-    local function doNothing() end
-    DarkRP.openF4Menu = doNothing
-    DarkRP.closeF4Menu = doNothing
-    DarkRP.toggleF4Menu = doNothing
-end)
+-- hook.Add("PostGamemodeLoaded", "PIXEL.F4.RemoveDefaultF4", function()
+--     local function doNothing() end
+--     DarkRP.openF4Menu = doNothing
+--     DarkRP.closeF4Menu = doNothing
+--     DarkRP.toggleF4Menu = doNothing
+-- end)

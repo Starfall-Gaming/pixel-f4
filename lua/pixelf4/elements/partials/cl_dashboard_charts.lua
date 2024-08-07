@@ -109,7 +109,7 @@ function PANEL:Init()
 
     local oldPerformLayout = selfInfo.PerformLayout
     local yourName = LocalPlayer():Nick()
-    local moneyText = PIXEL.FormatMoney(LocalPlayer():getDarkRPVar("money"))
+    local moneyText = PIXEL.FormatMoney(LocalPlayer():GetCharacter():GetMoney())
     local overlayCol = Color(0,0,0,200)
 
     function selfInfo:PerformLayout(w, h)

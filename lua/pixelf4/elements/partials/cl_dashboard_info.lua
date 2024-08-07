@@ -35,7 +35,7 @@ function PANEL:Init()
 	self.LeftPnl.Title = "Laws"
 	self.RightPnl.Title = "Commands"
 
-	local lawTableIsEmpty = (#DarkRP.getLaws()) == 0
+	local lawTableIsEmpty = true -- (#DarkRP.getLaws()) == 0
 	function self.LeftPnl:Paint(w,h)
 		PIXEL.DrawRoundedBox(PIXEL.Scale(6), 0, 0, w, h, PIXEL.F4.Colors.RecentsContainer)
 		PIXEL.DrawRoundedBoxEx(PIXEL.Scale(6), 0, 0, w, PIXEL.Scale(27),PIXEL.Colors.Header, true, true)
@@ -144,31 +144,31 @@ function PANEL:GenerateItems(l, r, dontRefreshCommands)
 	self:ClearLaws()
 
 	-- Laws
-	for index,v in ipairs(DarkRP.getLaws()) do
-		local p = vgui.Create("Panel", self.LeftCat)
+	-- for index,v in ipairs(DarkRP.getLaws()) do
+	-- 	local p = vgui.Create("Panel", self.LeftCat)
 
-		p.TextWrap = ""
-		p.TextHigh = 0
+	-- 	p.TextWrap = ""
+	-- 	p.TextHigh = 0
 
-		function p:Paint(w,h)
-			PIXEL.DrawRoundedBoxEx(PIXEL.Scale(6), 0, 0, 20, h, PIXEL.F4.Colors.SecondaryHeader, true, false, true)
-			PIXEL.DrawSimpleText(index, "F4.DashInfoText", 10, h / 2, PIXEL.Colors.PrimaryText, 1, 1)
-			PIXEL.DrawText(self.TextWrap, "F4.DashInfoText", 25, 3, PIXEL.Colors.PrimaryText, 0)
-		end
+	-- 	function p:Paint(w,h)
+	-- 		PIXEL.DrawRoundedBoxEx(PIXEL.Scale(6), 0, 0, 20, h, PIXEL.F4.Colors.SecondaryHeader, true, false, true)
+	-- 		PIXEL.DrawSimpleText(index, "F4.DashInfoText", 10, h / 2, PIXEL.Colors.PrimaryText, 1, 1)
+	-- 		PIXEL.DrawText(self.TextWrap, "F4.DashInfoText", 25, 3, PIXEL.Colors.PrimaryText, 0)
+	-- 	end
 
-		function p:PerformLayout(w,h)
-			self.TextWrap = PIXEL.WrapText(v, w - 5, "F4.DashInfoText")
-			self.TextHigh = select(2, PIXEL.GetTextSize(self.TextWrap, "F4.DashInfoText"))
-			if self.TextHigh == h + 5 then return end
-			if self.TextWrap:find("\n") then
-				self:SetTall(self.TextHigh + 8)
-			else
-				self:SetTall(self.TextHigh + 5)
-			end
-		end
+	-- 	function p:PerformLayout(w,h)
+	-- 		self.TextWrap = PIXEL.WrapText(v, w - 5, "F4.DashInfoText")
+	-- 		self.TextHigh = select(2, PIXEL.GetTextSize(self.TextWrap, "F4.DashInfoText"))
+	-- 		if self.TextHigh == h + 5 then return end
+	-- 		if self.TextWrap:find("\n") then
+	-- 			self:SetTall(self.TextHigh + 8)
+	-- 		else
+	-- 			self:SetTall(self.TextHigh + 5)
+	-- 		end
+	-- 	end
 
-		self.ItemsLeft[#self.ItemsLeft + 1] = p
-	end
+	-- 	self.ItemsLeft[#self.ItemsLeft + 1] = p
+	-- end
 
 	-- Commands
 	if dontRefreshCommands then return end

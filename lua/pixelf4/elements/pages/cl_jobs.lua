@@ -32,40 +32,43 @@ function PANEL:Populate(canvas, searchTerm)
     end
 
     local localPly = LocalPlayer()
-    for k,v in SortedPairsByMemberValue(DarkRP.getCategories().jobs, "sortOrder") do
-        if #v.members < 1 then continue end
-        if isfunction(v.canSee) and not v.canSee(localPly) then continue end
-
+    for k,v in SortedPairsByMemberValue(ix.faction.indices, "sortOrder") do
         local cat = vgui.Create("PIXEL.F4.ItemCategory", canvas)
         cat:SetTitle(v.name)
         cat:Dock(TOP)
-        cat:SetExpanded(v.startExpanded)
+        cat:SetExpanded(true)
 
         cat.SetExtraItemData = function(s, item, itemData)
-            local teamNo = teams[itemData.name] or -1
+            local teamNo = itemData.faction
 
             item.DoClick = function()
-                self:SelectJob(itemData, teamNo)
+                self:SelectJob(itemData, itemData.index)
             end
 
             item:SetTeamNo(teamNo)
 
-            if itemData.max == 0 then
+            if itemData.limit == 0 then
                 item:SetSlotText("∞")
                 return
             end
 
-            self.LimitedJobs[teamNo] = {panel = item, maxSlots = itemData.max}
+            self.LimitedJobs[teamNo] = {panel = item, maxSlots = itemData.limit}
         end
 
         cat:SetItemType("Job")
-        cat:SetItems(v.members, searchTerm)
+
+        self.classes = {}
+        for i, class in SortedPairsByMemberValue(ix.class.list, "sortOrder") do
+            if class.faction ~= k then continue end
+            self.classes[i] = class
+        end
+        cat:SetItems(self.classes, searchTerm)
+
 
         if #cat.Items < 1 then cat:Remove() continue end
 
         table.insert(self.Categories, cat)
     end
-
     self:UpdateJobSlots()
 
     timer.Create("PIXEL.F4.CalculateJobSlots", 2, 0, function()

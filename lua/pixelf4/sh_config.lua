@@ -19,48 +19,48 @@ PIXEL.F4.Config = {
     SidebarLogo = "YCRtBVO",
     Announcement = false,
     WebsiteLinks = {
-        [1] = {
-            Name = "Rewards",
-            ChatCommand = "!rewards",
-            ImgurID = "HxsUUz2"
-        },
-        [2] = {
-            Name = "Rules",
-            Link = "https://google.com",
-            ImgurID = "0aWOlMI"
-        },
+        -- [1] = {
+        --     Name = "Rewards",
+        --     ChatCommand = "!rewards",
+        --     ImgurID = "HxsUUz2"
+        -- },
+        -- [2] = {
+        --     Name = "Rules",
+        --     Link = "https://google.com",
+        --     ImgurID = "0aWOlMI"
+        -- },
         [3] = {
             Name = "Discord",
-            Link = "https://google.com",
+            Link = "https://discord.gg/kM2PwVSX6W",
             ImgurID = "EtvPE3C"
         },
         [4] = {
             Name = "Forum",
-            Link = "https://google.com",
+            Link = "https://starfallgaming.com",
             ImgurID = "8ey54bc"
         },
         [5] = {
             Name = "Shop",
-            Link = "https://google.com",
+            Link = "https://store.starfallgaming.com",
             ImgurID = "jbp3ZT5"
         }
     },
     Commands = {
-        {
-            Name = "Sell All Doors",
-            Func = function()
-                RunConsoleCommand("say", "/sellalldoors")
-            end
-        },
-        {
-            Name = "Drop Money",
-            Func = function()
-                PIXEL.F4.ToggleMenu()
-                Derma_StringRequest("Drop Money", "Drop an amount of money:", "100", function(txt)
-                    RunConsoleCommand("say", "/dropmoney " .. txt or "")
-                end )
-            end
-        },
+        -- {
+        --     Name = "Sell All Doors",
+        --     Func = function()
+        --         RunConsoleCommand("say", "/sellalldoors")
+        --     end
+        -- },
+        -- {
+        --     Name = "Drop Money",
+        --     Func = function()
+        --         PIXEL.F4.ToggleMenu()
+        --         Derma_StringRequest("Drop Money", "Drop an amount of money:", "100", function(txt)
+        --             RunConsoleCommand("say", "/dropmoney " .. txt or "")
+        --         end )
+        --     end
+        -- },
         {
             Name = "Change Name",
             Func = function()
@@ -70,31 +70,31 @@ PIXEL.F4.Config = {
                 end )
             end
         },
-        {
-            Name = "Broadcast",
-            Func = function()
-                PIXEL.F4.ToggleMenu()
-                Derma_StringRequest("Change Name", "Change your Roleplay name (Leave Blank for your Steam name):", LocalPlayer():Nick(), function(txt)
-                    RunConsoleCommand("say", "/rpname " .. Either(#txt >= 2, txt, LocalPlayer():SteamName()))
-                end )
-            end,
-            CanSee = function()
-                return LocalPlayer():isMayor()
-            end
-        }
+        -- {
+        --     Name = "Broadcast",
+        --     Func = function()
+        --         PIXEL.F4.ToggleMenu()
+        --         Derma_StringRequest("Change Name", "Change your Roleplay name (Leave Blank for your Steam name):", LocalPlayer():Nick(), function(txt)
+        --             RunConsoleCommand("say", "/rpname " .. Either(#txt >= 2, txt, LocalPlayer():SteamName()))
+        --         end )
+        --     end,
+        --     CanSee = function()
+        --         return LocalPlayer():isMayor()
+        --     end
+        -- }
     },
     WeaponOverrides = {
-        ["weapon_bugbait"] = {
-            WorldModel = "models/weapons/w_bugbait.mdl",
-            PrintName = "Bug Bait"
-        }
+        -- ["weapon_bugbait"] = {
+        --     WorldModel = "models/weapons/w_bugbait.mdl",
+        --     PrintName = "Bug Bait"
+        -- }
     }
 }
 
 if SERVER then return end
 
 PIXEL.F4.Config.RankTags = {
-    [PIXEL.RankTags.VIP] = {"VIP", PIXEL.Colors.Gold},
-    [PIXEL.RankTags.VIP_PLUS] = {"VIP+", "rainbow"},
-    [PIXEL.RankTags.STAFF] = {"Staff Only", PIXEL.Colors.Negative}
+    -- [PIXEL.RankTags.VIP] = {"VIP", PIXEL.Colors.Gold},
+    -- [PIXEL.RankTags.VIP_PLUS] = {"VIP+", "rainbow"},
+    -- [PIXEL.RankTags.STAFF] = {"Staff Only", PIXEL.Colors.Negative}
 }
