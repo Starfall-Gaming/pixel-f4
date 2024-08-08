@@ -31,10 +31,10 @@ function PANEL:Init()
 
     local sidebar = self:CreateSidebar("Dashboard", PIXEL.F4.Config.SidebarLogo, nil, PIXEL.Scale(10), PIXEL.Scale(20))
 
-    sidebar:AddItem("Dashboard", "Dashboard", "dkErdSv", function() self:ChangeTab("PIXEL.F4.Dashboard", "Dashboard") end)
+    -- sidebar:AddItem("Dashboard", "Dashboard", "dkErdSv", function() self:ChangeTab("PIXEL.F4.Dashboard", "Dashboard") end)
     sidebar:AddItem("Jobs", "Jobs", "v5e4tGV", function() self:ChangeTab("PIXEL.F4.Jobs", "Jobs") end)
-    sidebar:AddItem("Entities", "Entities", "Be1LD3X", function() self:ChangeTab("PIXEL.F4.Entities", "Entities") end)
-    sidebar:AddItem("Weapons", "Weapons", "tMz2fGT", function() self:ChangeTab("PIXEL.F4.Weapons", "Weapons") end)
+    -- sidebar:AddItem("Entities", "Entities", "Be1LD3X", function() self:ChangeTab("PIXEL.F4.Entities", "Entities") end)
+    -- sidebar:AddItem("Weapons", "Weapons", "tMz2fGT", function() self:ChangeTab("PIXEL.F4.Weapons", "Weapons") end)
 
     local add = function(idname, imgur, pnl)
         sidebar:AddItem(idname, idname, imgur, function() self:ChangeTab(pnl, id) end)

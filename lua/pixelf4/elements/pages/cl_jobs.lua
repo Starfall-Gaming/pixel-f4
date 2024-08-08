@@ -39,7 +39,7 @@ function PANEL:Populate(canvas, searchTerm)
         cat:SetExpanded(true)
 
         cat.SetExtraItemData = function(s, item, itemData)
-            local teamNo = itemData.faction
+            local teamNo = itemData.index
 
             item.DoClick = function()
                 self:SelectJob(itemData, itemData.index)
@@ -85,7 +85,8 @@ function PANEL:UpdateJobSlots()
     local teamPlayers = {}
 
     for k,v in ipairs(player.GetAll()) do
-        teamPlayers[v:Team()] = (teamPlayers[k] or 0) + 1
+        local class = v:GetClassData().index
+        teamPlayers[class] = (teamPlayers[class] or 0) + 1
     end
 
     for k,v in pairs(self.LimitedJobs) do

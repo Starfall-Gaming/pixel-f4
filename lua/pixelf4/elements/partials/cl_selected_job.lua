@@ -167,10 +167,8 @@ function PANEL:Init()
     self.BecomeBtn = vgui.Create("PIXEL.TextButton", self)
     self.BecomeBtn:SetFont("F4.SelectedJobButton")
     self.BecomeBtn.DoClick = function()
-        local class = self:GetTeamNo()
-        net.Start("ixJobSwitch")
-            net.WriteUInt(class, 8)
-            net.SendToServer() 
+        RunConsoleCommand("ix", "becomeclass", self:GetCommand())
+
         self:Close()
         PIXEL.F4.ToggleMenu()
     end

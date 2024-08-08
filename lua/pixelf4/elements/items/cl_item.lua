@@ -32,7 +32,7 @@ function PANEL:Init()
     self.Model:SetKeyboardInputEnabled(false)
 
     self.Model.Paint = function(s, w, h)
-        surface.SetDrawColor(self.ModelBackgroundCol)
+        if IsColor(self.ModelBackgroundCol) then surface.SetDrawColor(self.ModelBackgroundCol) end
         surface.SetMaterial(material)
         surface.DrawTexturedRectRotated(5, 5, w * 3, h * 2, -45)
     end
