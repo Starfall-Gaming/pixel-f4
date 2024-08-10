@@ -84,8 +84,10 @@ end
 function PANEL:UpdateJobSlots()
     local teamPlayers = {}
 
-    for k,v in ipairs(player.GetAll()) do
-        local class = v:GetClassData().index
+    for _, ply in player.Iterator() do
+        local char = ply:GetCharacter()
+        if not char then continue end
+        local class = char:GetClass()
         teamPlayers[class] = (teamPlayers[class] or 0) + 1
     end
 
