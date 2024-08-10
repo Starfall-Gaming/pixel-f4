@@ -29,7 +29,7 @@ function PANEL:Init()
 
     self:SetTitle(PIXEL.F4.Config.MenuTitle)
 
-    local sidebar = self:CreateSidebar("Dashboard", PIXEL.F4.Config.SidebarLogo, nil, PIXEL.Scale(10), PIXEL.Scale(20))
+    local sidebar = self:CreateSidebar("Jobs", PIXEL.F4.Config.SidebarLogo, nil, PIXEL.Scale(10), PIXEL.Scale(20))
 
     -- sidebar:AddItem("Dashboard", "Dashboard", "dkErdSv", function() self:ChangeTab("PIXEL.F4.Dashboard", "Dashboard") end)
     sidebar:AddItem("Jobs", "Jobs", "v5e4tGV", function() self:ChangeTab("PIXEL.F4.Jobs", "Jobs") end)
